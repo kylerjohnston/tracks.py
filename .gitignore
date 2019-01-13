@@ -1,0 +1,7 @@
+__pycache__/
+spotify_dump.txt
+*.csv
+*.json*
+*.py~
+venv/
+spotify_token.py
