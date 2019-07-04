@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#/usr/bin/env python3
 """
 tracks.py is an application to track and compare your Spotify and Google Play Music libraries.
 """
@@ -213,6 +213,7 @@ if __name__ == '__main__':
         print('Building a model of your Spotify library...')
         spotify_library = spotify_transform(spotify_export)
 
+    if args.compare:
         print('Finding unique Spotify tracks...')
         spotify_unique = spotify_library.find_diffs(gpm_library)
         spotify_unique_outfile = os.path.join(os.path.expanduser(args.outdir), 'spotify_unique_tracks.csv')
