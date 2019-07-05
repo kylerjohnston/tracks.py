@@ -34,6 +34,7 @@ import csv
 import os
 import hashlib
 import time
+import operator
 
 class MusicLibrary:
     def __init__(self):
@@ -76,7 +77,8 @@ class MusicLibrary:
             fieldnames = self.track_keys + ['id']
             writer = csv.DictWriter(f, fieldnames = fieldnames)
             writer.writeheader()
-            for row in self.library:
+            sorted_library = sorted(self.library, key=operator.itemgetter('artist', 'album', 'track_number'))
+            for row in sorted_library:
                 writer.writerow(row)
 
     def find_diffs(self, other_library):
