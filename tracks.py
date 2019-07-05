@@ -126,10 +126,11 @@ def gpm_transform(gpm_export):
         music_library.add_track(song_model)
     return music_library
 
-def spotify_login(SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET):
+def spotify_login(SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET, username):
     SPOTIFY_REDIRECT_URI = 'http://localhost/'
     SPOTIFY_SCOPE = 'user-library-read'
-    username = input('Spotify username: ')
+    if username == None:
+        username = input('Spotify username: ')
     token = util.prompt_for_user_token(username,
                                        SPOTIFY_SCOPE,
                                        client_id=SPOTIFY_CLIENT_ID,
@@ -189,6 +190,7 @@ if __name__ == '__main__':
                         default = '',
                         type = str,
                         help = 'Directory to write CSV files.')
+    parser.add_argument('-u', '--username', help = 'Spotify username', type = str)
     args = parser.parse_args()
 
     # See if we need to deal with GPM
@@ -209,7 +211,7 @@ if __name__ == '__main__':
     # See if we need to deal with Spotify
     if args.compare or args.spotify:
         print('Logging into Spotify...')
-        spotify = spotify_login(SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET)
+        spotify = spotify_login(SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET, args.username)
         print('Getting your Spotify library...')
         spotify_export = spotify_get_all_songs(spotify)
         print('Building a model of your Spotify library...')
