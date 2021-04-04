@@ -8,9 +8,22 @@ It's most useful right now for creating a CSV file documenting all the tracks in
 ## Installation
 
 ### Dependencies
+You will need these system packages installed (for Fedora, at least):
+- python3-devel
+- libxml2-devel
+- libxslt-devel
+
 You need to install these libraries:
 - gmusicapi
 - spotipy
+
+Make a venv and install them:
+
+``` shell
+python -m venv venv/
+source venv/bin/activate
+pip install -r requirements.txt
+```
 
 ### Authenticating to Spotify
 If you need to connect to a Spotify account, you will need to create a Spotify authorization token by going to [the Spotify Developer Dashboard](https://developer.spotify.com/dashboard/applications) and clicking "Create a Client ID."
