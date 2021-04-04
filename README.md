@@ -28,7 +28,7 @@ pip install -r requirements.txt
 ### Authenticating to Spotify
 If you need to connect to a Spotify account, you will need to create a Spotify authorization token by going to [the Spotify Developer Dashboard](https://developer.spotify.com/dashboard/applications) and clicking "Create a Client ID."
 
-Add your client ID and client secret to the file `spotify_token.py`.
+Copy `EXAMPLE_spotify_token.py` to `spotify_token.py`. Add your client ID and client secret to the file `spotify_token.py`.
 
 ``` python
 SPOTIFY_CLIENT_ID='your client id'

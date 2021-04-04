@@ -6,3 +6,4 @@ spotify_dump.txt
 venv/
 my_token
 .cache*
+spotify_token.py
